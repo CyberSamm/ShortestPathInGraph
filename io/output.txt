@@ -1,0 +1,4 @@
+Number of shortest paths is 1
+Path length is 7
+Paths:
+12 11 10 9 8 7 6 5 
