@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
         }
         fout << i << " " << i + 1 << " " << 1 << "\n";
     }
-
+    /*
     std::cout << "Enter source and destination" << std::endl;
     int source, destination;
     std::cin >> source >> destination;
@@ -35,7 +35,9 @@ int main(int argc, char** argv) {
             exit(1);
     }
 
-    fout << source << " " <<  destination; 
+    fout << source << " " <<  destination << "\n"; 
+    */
+    //fout << "end";
     fout.close();
     
     return 0;

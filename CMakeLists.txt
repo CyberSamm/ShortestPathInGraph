@@ -9,3 +9,5 @@ add_executable(base_input src/base_input.cpp)
 
 add_executable(cycle_test Tests/cycle_test.cpp)
 add_executable(matrix_test Tests/matrix_test.cpp)
+
+add_executable(rand Tests/rand.cpp)

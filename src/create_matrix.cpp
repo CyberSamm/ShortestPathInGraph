@@ -5,6 +5,7 @@
 #include <vector>
 
 int main(int argc, char** argv) {
+    /*
     std::cout << "Enter source and destination" << std::endl;
     int source, destination;
     std::cin >> source >> destination;
@@ -12,11 +13,10 @@ int main(int argc, char** argv) {
         (destination > 10000 || destination < 1)){
             std::cout << "Invalid input value.\nSource and destination must be from [1, 10000]\n";
             exit(1);
-    }
+    }*/
 
     std::ofstream fout;
     fout.open("io/input.txt");
-
     if (!fout.is_open()) {
         std::cout << "Unable to open file" << std::endl;
         exit(1);
@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
       //fout << "\n";
       ++count;
     }
-
+    /*
     count = 1;
     std::vector<std::vector<int>> matrix(100);
     for(int i = 0 ; i < matrix.size(); ++i){
@@ -58,15 +58,16 @@ int main(int argc, char** argv) {
         ++count;
       }
     } 
-    /*
+    
     for(int i = 0 ; i < matrix.size(); ++i){
       for(int j = 0; j < matrix[i].size(); ++j){
         fout << matrix[i][j] << " ";
       }
       fout << "\n";
-    } */
+    }
+    */
 
-    fout << source << " " <<  destination; 
+    //fout << source << " " <<  destination; 
     fout.close();
  
     return 0;

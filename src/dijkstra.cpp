@@ -101,7 +101,7 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>>& graph, std::vector<s
     return distance[end];
 }
 
-void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from, int to) {
+void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from, int to, std::ostream& fout) {
     int n = graph.size();
 
     std::vector<std::vector<int>> paths;
@@ -120,14 +120,7 @@ void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from,
         std::cout << std::endl;
 
     }*/
-    std::string output = "io/output.txt";
-    std::ofstream fout;
-    fout.open(output);
-    if (!fout.is_open()) {
-        std::cout << "Unable to open the " << output << " file" << std::endl;
-        exit(1);
-    }
-
+    
     fout << "Number of shortest paths is " << paths.size() << "\n";
     fout << "Path length is " << dist << "\n";
     fout << "Paths:" << "\n";
@@ -138,7 +131,8 @@ void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from,
             fout << u << " ";
         }
         fout << "\n";
-    }   
+    } 
+    fout << "end" << "\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -154,10 +148,11 @@ int main(int argc, char* argv[]) {
         exit(1);
     }
 
+    std::vector<std::vector<std::pair<int, int>>> graph;
     while (!fin.eof()) {
         int n;
         fin >> n;
-        std::vector<std::vector<std::pair<int, int>>> graph(n + 1);
+        graph.resize(n + 1);
 
         int m;
         fin >> m;
@@ -167,13 +162,42 @@ int main(int argc, char* argv[]) {
             graph[x].push_back(std::make_pair(y, length));
             graph[y].push_back(std::make_pair(x, length));
         }
-
+        /*
         int from, to;
         fin >> from >> to;
 
         print_paths(graph, from, to);
+        */
     }
     fin.close();
+
+    fin.open("io/random.txt");
+    if (!fin.is_open()) {
+        std::cout << "Unable to open file" << std::endl;
+        exit(1);
+    }
+    std::vector<std::pair<int, int>> v;
+    while (!fin.eof()) {
+        int a,b;
+        fin >> a >> b;
+        v.push_back({a, b});
+    }
+
+    fin.close();
+
+    file_name = "io/output.txt";
+    std::ofstream fout;
+    fout.open(file_name);
+    if (!fout.is_open()) {
+        std::cout << "Unable to open the " << file_name << " file" << std::endl;
+        exit(1);
+    }
+
+    for(auto elem : v){
+        print_paths(graph, elem.first, elem.second, fout);
+    }
+    
+    fout.close();  
     return 0;
 }
 /* test
