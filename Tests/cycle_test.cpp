@@ -88,11 +88,7 @@ int main() {
                 paths.push_back(find_path(v[index].first, v[index].second, 1));
                 paths.push_back(find_path(v[index].first, v[index].second, -1));
                 dist = std::to_string(std::abs(v[index].first - v[index].second));
-            }/*
-            std::cout << dist << std::endl;
-            for (int i = 0; i < paths.size(); ++i) {
-                std::cout << paths[i] << std::endl;
-            }*/
+            }
             std::string num_of_paths = std::to_string(paths.size());
             std::getline(fin, data); // line: Paths
             while (!fin.eof()) {

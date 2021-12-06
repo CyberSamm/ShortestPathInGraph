@@ -111,15 +111,6 @@ void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from,
     int dist = dijkstra(graph, answer, from, to);
 
     find_paths2(paths, path, answer, to, from);
-    /*
-    for (int i = 0; i < answer.size(); ++i) {
-        std::cout << i << ": ";
-        for (int j = 0; j < answer[i].size(); ++j) {
-            std::cout << answer[i][j] << " ";
-        }
-        std::cout << std::endl;
-
-    }*/
     
     fout << "Number of shortest paths is " << paths.size() << "\n";
     fout << "Path length is " << dist << "\n";
@@ -137,10 +128,7 @@ void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from,
 
 int main(int argc, char* argv[]) {
     std::ifstream fin;
-
-    // std::cout << "io/input.txt" << std::endl;
     std::string file_name = "io/input.txt";
-    // std::cin >> file_name;
 
     fin.open(file_name);
     if (!fin.is_open()) {
@@ -162,12 +150,6 @@ int main(int argc, char* argv[]) {
             graph[x].push_back(std::make_pair(y, length));
             graph[y].push_back(std::make_pair(x, length));
         }
-        /*
-        int from, to;
-        fin >> from >> to;
-
-        print_paths(graph, from, to);
-        */
     }
     fin.close();
 
@@ -200,62 +182,3 @@ int main(int argc, char* argv[]) {
     fout.close();  
     return 0;
 }
-/* test
-9 14
-0 1 4
-0 7 8
-1 2 8
-1 7 11
-2 3 7
-2 5 4
-2 8 2
-3 4 9
-3 5 14
-4 5 10
-5 6 2
-6 7 1
-6 8 6
-7 8 7
-0
-
-expected output:
-
-Vertex   Distance from Source
-0       0
-1       4
-2       12
-3       19
-4       21
-5       11
-6       9
-7       8
-8       14
-//
-
-10 10
-0 1 1
-1 2 2
-2 3 2
-3 9 3
-0 4 1
-4 5 1
-5 6 1
-6 7 1
-7 8 1
-8 9 3
-0
-
-A
-7 10
-0 5 1000
-0 1 3
-1 5 5
-1 4 4
-4 5 9
-5 6 4
-4 3 3
-3 2 1
-2 6 1
-3 6 2
-0 6
-*/

@@ -24,20 +24,6 @@ int main(int argc, char** argv) {
         }
         fout << i << " " << i + 1 << " " << 1 << "\n";
     }
-    /*
-    std::cout << "Enter source and destination" << std::endl;
-    int source, destination;
-    std::cin >> source >> destination;
-
-    if((source > 10000 || source < 1) || 
-        (destination > 10000 || destination < 1)){
-            std::cout << "Invalid input value.\nSource and destination must be from [1, 10000]\n";
-            exit(1);
-    }
-
-    fout << source << " " <<  destination << "\n"; 
-    */
-    //fout << "end";
     fout.close();
     
     return 0;

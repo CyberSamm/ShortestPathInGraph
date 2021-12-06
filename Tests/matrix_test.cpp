@@ -111,13 +111,7 @@ std::string findWaysCount(int rows, int columns) {
     }
 
     BigInt result = ways[rows - 1][columns - 1];
-    /*
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < columns; ++j) {
-                std::cout << ways[i][j] << " ";
-            }
-            std::cout << std::endl;
-        }*/
+    
     return result.s;
 }
 
@@ -137,12 +131,6 @@ std::pair<int, int> find_rows_and_columns(int source, int destination) {
 }
 
 void print(const std::vector<int>& v, std::ofstream& fout) {
-    /*
-    for(int elem : v){
-      std::cout << elem << " ";
-    }
-    std::cout << "\n";
-    */
     for (int elem : v) {
         fout << elem << " ";
     }
@@ -196,14 +184,6 @@ void find_paths(int rows, int columns, std::vector<std::vector<int>>& vv) {
         }
         combinations.push_back(temp);
     }
-    /*
-    std::cout << "\n\n\ncomb:\n";
-    for (int i = 0; i < combinations.size(); ++i) {
-        for (int j = 0; j < combinations[i].size(); ++j) {
-            std::cout << combinations[i][j] << " ";
-        }
-        std::cout << "\n";
-    }*/
     fin.close();
     
     for (int i = 0; i < combinations.size(); ++i) {
@@ -213,14 +193,6 @@ void find_paths(int rows, int columns, std::vector<std::vector<int>>& vv) {
         }
         vv.push_back(temp);
     }
-    /*
-    std::cout << "\n\n\nvv:\n";
-    for (int i = 0; i < vv.size(); ++i) {
-        for (int j = 0; j < vv[i].size(); ++j) {
-            std::cout << vv[i][j] << " ";
-        }
-        std::cout << "\n";
-    }*/
 }
 
 void make_path(int source, int dest, int dir1, int dir2, std::vector<std::string>& paths, const std::vector<std::vector<int>>& vv) {
@@ -360,10 +332,10 @@ int main() {
             for (auto elem : paths) {
                 std::cout << elem << "\n";
             }
+            //std::string num_of_paths = std::to_string(paths.size());
             */
             // ----------
 
-            //std::string num_of_paths = std::to_string(paths.size());
             std::getline(fin, data); // line: Paths
             while (!fin.eof()) {
                 std::getline(fin, data);
