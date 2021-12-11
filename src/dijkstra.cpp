@@ -7,7 +7,8 @@
 #include <queue>
 #include <stack>
 
-void find_paths(std::vector<std::vector<int>>& paths, std::vector<int>& path, std::vector<std::vector<int>>& answer, int to) {
+void find_paths(std::vector<std::vector<int>>& paths, std::vector<int>& path, 
+                const std::vector<std::vector<int>>& answer, int to) {
     if (to == -1) {
         paths.push_back(path);
         return;
@@ -20,7 +21,8 @@ void find_paths(std::vector<std::vector<int>>& paths, std::vector<int>& path, st
     }
 }
 
-void find_paths2(std::vector<std::vector<int>>& paths, std::vector<int>& path, std::vector<std::vector<int>>& answer, int from, int to) {
+void find_paths2(std::vector<std::vector<int>>& paths, std::vector<int>& path, 
+                const std::vector<std::vector<int>>& answer, int from, int to) {
 
     std::stack<int> s_path;
     std::stack<int> s_index;
@@ -158,11 +160,11 @@ int main(int argc, char* argv[]) {
         std::cout << "Unable to open file" << std::endl;
         exit(1);
     }
-    std::vector<std::pair<int, int>> v;
+    std::vector<std::pair<int, int>> vertices;
     while (!fin.eof()) {
         int a,b;
         fin >> a >> b;
-        v.push_back({a, b});
+        vertices.push_back({a, b});
     }
 
     fin.close();
@@ -175,7 +177,7 @@ int main(int argc, char* argv[]) {
         exit(1);
     }
 
-    for(auto elem : v){
+    for(auto elem : vertices){
         print_paths(graph, elem.first, elem.second, fout);
     }
     
