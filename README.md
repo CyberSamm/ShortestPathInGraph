@@ -8,17 +8,17 @@ Tests:
 
 ## Realization:
 
-The project contains **scripts** and **CMakeLists.txt** both are for building and running cpp programs. cpp files are stored in the **scr/** directory. The **Tests/** directory contains tests. The **io/** directory is for input output files.
+The project contains **scripts** and **CMakeLists.txt** both are for building and running cpp programs. cpp files are stored in the **src/** directory. The **Tests/** directory contains tests. The **io/** directory is for input output files.
 
-### scr
+### src
 * *dijkstra.cpp* takes graph from input.txt and writes number of paths, path length, and paths to output.txt. input.txt and output.txt are in io/ directory.
-* *create_cycle.cpp* white to input.txt adjacency list representation of graph(cycle contains 10000 vertices).
-* *create_cycle.cpp* white to input.txt adjacency list representation of graph(100 X 100 matrix).
+* *cycle.cpp* white to input.txt adjacency list representation of graph(cycle contains 10000 vertices).
+* *cycle.cpp* white to input.txt adjacency list representation of graph(100 X 100 matrix).
 
 ### Tests
 * *cycle_test.cpp* checks the work of the dijkstra.cpp that found paths for the cycle.
 * *martix_test.cpp* checks the work of the dijkstra.cpp that found paths for the matrix.
-* *rand.cpp* generate random naumbers and whites them to random.txt. random.txt is in io/ directory. 
+* *randVertices.cpp* generate random naumbers and whites them to random.txt. random.txt is in io/ directory. 
 
 ### io
 * *input.txt* contains graph. Graph represented by adjacency list.
