@@ -9,4 +9,4 @@ add_executable(matrix src/matrix.cpp)
 add_executable(cycle_test tests/cycle_test.cpp)
 add_executable(matrix_test tests/matrix_test.cpp)
 
-add_executable(rand tests/rand.cpp)
+add_executable(rand tests/randVertices.cpp)
