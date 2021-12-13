@@ -6,7 +6,4 @@ add_executable(dijkstra src/dijkstra.cpp)
 add_executable(cycle src/cycle.cpp)
 add_executable(matrix src/matrix.cpp)
 
-add_executable(cycle_test tests/cycle_test.cpp)
-add_executable(matrix_test tests/matrix_test.cpp)
-
-add_executable(rand tests/randVertices.cpp)
+add_executable(rand src/randVertices.cpp)

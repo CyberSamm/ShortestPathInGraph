@@ -30,10 +30,11 @@ std::string find_path(int s, int d, int dir) {
 }
 
 int main() {
+    std::string file_name = "../io/random.txt";
     std::ifstream fin;
-    fin.open("io/random.txt");
+    fin.open(file_name);
     if (!fin.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
     std::vector<std::pair<int, int>> v;
@@ -45,10 +46,10 @@ int main() {
 
     fin.close();
 
-   
-    fin.open("io/output.txt");
+   file_name = "../io/output.txt";
+    fin.open(file_name);
     if (!fin.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
 
@@ -56,6 +57,8 @@ int main() {
     std::vector<std::string> path_from_dij;
     std::string data;
     int index = 0;
+
+    std::cout << "Running tests for cycle.\n"; 
     while (!fin.eof()) {
         std::getline(fin, data);
         if (data[0] == 'N') {
@@ -98,26 +101,26 @@ int main() {
                 }
                 path_from_dij.push_back(data);
             }
-            
+            std::cout << "Test " << index + 1 << ": source - " <<  v[index].first << " destination - " << v[index].second << "\n"; 
             if (dist == dist_from_dij && count_from_dij == num_of_paths) {
                 if (paths.size() != path_from_dij.size()) {
-                    std::cout << "Test " << index + 1 << " failed. (cycle)\n";
+                    std::cout << "Failed.\n";
                 }
                 else {
                     bool success = true;
                     for (int i = 0; i < paths.size(); ++i) {
                         if (paths[i] != path_from_dij[i]) {
-                            std::cout << "Test " << index + 1 << " failed. (cycle)\n";
+                            std::cout << "Failed.\n";
                             success = false;
                         }
                     }
                     if (success) {
-                        std::cout << "Test " << index + 1 << " passed successfully. (cycle)\n";
+                        std::cout << "Passed successfully.\n";
                     }
                 }
             }
             else {
-                std::cout << "Test " << index + 1 << " failed. (cycle)\n";
+                std::cout << "Failed.\n";
             }
                 
             path_from_dij.clear();

@@ -151,10 +151,11 @@ void samples_of_size_k(int start, int end, int k, std::vector<int>& cur_comb, st
     }
 }
 void find_paths(int rows, int columns, std::vector<std::vector<int>>& vv) {
+    std::string file_name = "comb.txt";
     std::ofstream fout;
-    fout.open("io/comb.txt");
+    fout.open(file_name);
     if (!fout.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
     std::vector<int> comb;
@@ -163,9 +164,9 @@ void find_paths(int rows, int columns, std::vector<std::vector<int>>& vv) {
     fout.close();
     std::vector<std::vector<int>> combinations;
     std::ifstream fin;
-    fin.open("io/comb.txt");
+    fin.open(file_name);
     if (!fin.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
     std::string data;
@@ -263,10 +264,11 @@ void make_path(int source, int dest, int dir1, int dir2, std::vector<std::string
 }
 
 int main() {
+    std::string file_name = "../io/random.txt";
     std::ifstream fin;
-    fin.open("io/random.txt");
+    fin.open(file_name);
     if (!fin.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
     std::vector<std::pair<int, int>> v;
@@ -277,10 +279,10 @@ int main() {
     }
 
     fin.close();
-
-    fin.open("io/output.txt");
+    file_name = "../io/output.txt";
+    fin.open(file_name);
     if (!fin.is_open()) {
-        std::cout << "Unable to open file" << std::endl;
+        std::cout << "Unable to open " << file_name << std::endl;
         exit(1);
     }
 
@@ -288,6 +290,7 @@ int main() {
     std::vector<std::string> path_from_dij;
     std::string data;
     int index = 0;
+    std::cout << "Running tests for matrix.\n"; 
     while (!fin.eof()) {
         std::getline(fin, data);
         if (data[0] == 'N') {
@@ -344,11 +347,12 @@ int main() {
                 }
                 path_from_dij.push_back(data);
             }
+            std::cout << "Test " << index + 1 << ": source - " <<  v[index].first << " destination - " << v[index].second << "\n"; 
             if (dist == dist_from_dij && count_from_dij == num_of_paths) {
-                std::cout << "Test " << index + 1 << " passed successfully. (martix)\n";
+                std::cout << "Passed successfully.\n";
             }
             else {
-                std::cout << "Test " << index + 1 << " failed. (martix)\n";
+                std::cout << "Failed.\n";
             }
 
             path_from_dij.clear();
