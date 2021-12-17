@@ -114,6 +114,14 @@ void print_paths(std::vector<std::vector<std::pair<int, int>>>& graph, int from,
 
     find_paths2(paths, path, answer, to, from);
     
+    if ((from == 10000 || to == 10000) && paths.size() >= 19800) {
+        std::vector<std::vector<int>> tmp;
+        for (int i = 19800; i < paths.size(); ++i) {
+            tmp.push_back(paths[i]);
+        }
+        paths = tmp;
+    }
+
     fout << "Number of shortest paths is " << paths.size() << "\n";
     fout << "Path length is " << dist << "\n";
     fout << "Paths:" << "\n";

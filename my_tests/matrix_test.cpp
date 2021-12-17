@@ -121,9 +121,15 @@ std::pair<int, int> find_rows_and_columns(int source, int destination) {
 
     s_coordinates.first = (source - 1) % 100;
     d_coordinates.first = (destination - 1) % 100;
-    s_coordinates.second = (source / 100) % 100;
-    d_coordinates.second = (destination / 100) % 100;
+    (source == 10000) ? s_coordinates.second = 99 : s_coordinates.second = (source / 100) % 100;
+    (destination == 10000) ? d_coordinates.second = 99 : d_coordinates.second = (destination / 100) % 100;
 
+    if (d_coordinates.first == 99 && destination != 10000) {
+        --d_coordinates.second;
+    }
+    if (s_coordinates.first == 99 && source != 10000) {
+        --s_coordinates.second;
+    }
 
     int rows = std::abs(s_coordinates.first - d_coordinates.first);
     int columns = std::abs(s_coordinates.second - d_coordinates.second);
@@ -301,9 +307,15 @@ int main() {
             int rows = temp.first;
             int columns = temp.second;
             std::string dist = std::to_string(rows + columns);
-            std::string num_of_paths = findWaysCount(rows + 1, columns + 1);
-            if (num_of_paths == "-1") {
-                std::cout << "Invalid source and destination\n";
+            std::string num_of_paths;
+            if (rows == 0 && columns == 0) {
+                num_of_paths = "1";
+            }
+            else {
+                num_of_paths = findWaysCount(rows + 1, columns + 1);
+                if (num_of_paths == "-1") {
+                    std::cout << "Invalid source and destination\n";
+                }
             }
 
             // FIND PATHS
@@ -353,6 +365,7 @@ int main() {
             }
             else {
                 std::cout << "Failed.\n";
+                std::cout << dist << " dijkstra: " << dist_from_dij << "\n" << num_of_paths << " dijkstra: " << count_from_dij << "\n";
             }
 
             path_from_dij.clear();
